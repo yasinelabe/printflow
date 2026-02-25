@@ -1,0 +1,109 @@
+<odoo>
+    <!-- 1. Kitchen Printer Configuration -->
+    <record id="view_pos_printer_form_inherit_agent" model="ir.ui.view">
+        <field name="name">pos.printer.form.inherit.agent</field>
+        <field name="model">pos.printer</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_printer_form"/>
+        <field name="arch" type="xml">
+            <!-- Después del nombre, añadimos bloque de configuración del agente -->
+            <field name="name" position="after">
+                <group string="Local Print Agent">
+                    <field name="agent_printer_name" placeholder="Ex: KITCHEN_EPSON"/>
+                    <field name="agent_mode"
+                           widget="radio"
+                           options="{'horizontal': true}"/>
+                </group>
+            </field>
+
+            <!-- Ocultamos proxy_ip del POSBox estándar -->
+            <field name="proxy_ip" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- 2. POS Main Configuration (Odoo 18/19) -->
+    <record id="res_config_settings_view_form_inherit_agent" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.agent</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Dentro de la sección Connected Devices, agregamos un bloque bien organizado -->
+            <xpath expr="//block[@id='pos_connected_devices_section']" position="inside">
+
+                <setting string="Local Printing (Agent)"
+                         help="Configure direct connection between this POS and the desktop print agent.">
+                    <div class="content-group">
+
+                        <!-- BLOQUE A: Main Receipt Printer -->
+                        <div class="mt16 o_settings_box">
+                            <div class="o_settings_left">
+                                <span class="o_setting_label">Main Receipt Printer</span>
+                                <span class="text-muted">
+                                    Define the default printer used for POS customer receipts.
+                                </span>
+                            </div>
+                            <div class="o_settings_right">
+                                <div class="row">
+                                    <div class="col-12 col-md-8">
+                                        <label for="pos_agent_printer_name"
+                                               string="Agent Printer Name"
+                                               class="o_light_label"/>
+                                        <field name="pos_agent_printer_name"
+                                               placeholder="Ex: EPSON_TM_T20"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BLOQUE B: Agent Connection (URL & Mode) -->
+                        <div class="mt16 o_settings_box">
+                            <div class="o_settings_left">
+                                <span class="o_setting_label">Agent Connection</span>
+                                <span class="text-muted">
+                                    Define how this POS connects to the print agent and how receipts are sent.
+                                </span>
+                            </div>
+                            <div class="o_settings_right">
+                                <div class="row">
+                                    <!-- URL específica -->
+                                    <div class="col-12 col-md-8 mb8">
+                                        <label for="pos_agent_url"
+                                               string="POS-specific Agent URL"
+                                               class="o_light_label"/>
+                                        <field name="pos_agent_url"
+                                               placeholder="https://192.168.1.X:5000"/>
+                                        <div class="text-muted">
+                                            <strong>Overrides Global Config:</strong>
+                                            use the IP/URL of the computer running the agent for this POS.<br/>
+                                            <i>If left empty, the Global Agent URL from General Settings will be used.</i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modo principal (image / text) -->
+                                    <div class="col-12 col-md-8 mt8">
+                                        <label for="pos_agent_main_mode"
+                                               string="Main Receipt Mode"
+                                               class="o_light_label"/>
+                                        <field name="pos_agent_main_mode"
+                                               widget="radio"
+                                               options="{'horizontal': true}"/>
+                                        <div class="text-muted">
+                                            <ul class="mb0">
+                                                <li><b>Image</b>: best for thermal graphic printers.</li>
+                                                <li><b>Text Only</b>: recommended for dot-matrix or text-only drivers.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </setting>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

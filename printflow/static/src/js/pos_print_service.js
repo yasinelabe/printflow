@@ -303,38 +303,53 @@ patch(PosStore.prototype, {
                 continue;
             }
             
+            // Filter changes by this printer's product categories (same as standard Odoo)
+            const categoryIds = printer.config?.product_categories_ids || [];
+            const changes = this._getPrintingCategoriesChanges(categoryIds, orderChange);
+            const anyChangesToPrint = changes.new.length || changes.cancelled.length || orderChange.modeUpdate;
+            
+            if (!anyChangesToPrint) {
+                pfLog(`Printer ${printerId} (${pfPrinterName}): no order lines in its categories, skipping`);
+                continue;
+            }
+            
+            pfLog(`Printer ${printerId} (${pfPrinterName}): ${changes.new.length} new, ${changes.cancelled.length} cancelled - printing`);
+            
             try {
-                // Get the changes to print
-                const changesList = Array.isArray(orderChange) ? orderChange : [orderChange];
+                // Use category-filtered change for this printer only
+                const filteredChange = {
+                    new: changes.new,
+                    cancelled: changes.cancelled,
+                    noteUpdated: changes.noteUpdated,
+                    modeUpdate: orderChange.modeUpdate,
+                    generalNote: orderChange.generalNote,
+                };
                 
-                for (const change of changesList) {
-                    pfLog('Processing change:', change);
-                    
-                    // Generate receipt data
-                    let receiptsData = [];
-                    try {
-                        const { orderData, changes } = this.generateOrderChange(
-                            order,
-                            change,
-                            printer.config.product_categories_ids || [],
-                            reprint
-                        );
-                        receiptsData = await this.generateReceiptsDataToPrint(orderData, changes, change);
-                    } catch (e) {
-                        pfLog('Falling back to direct change data');
-                        receiptsData = [{
-                            changes: {
-                                new: change.new || [],
-                                cancelled: change.cancelled || [],
-                                config_name: this.config.name,
-                                employee_name: this.get_cashier?.()?.name || '',
-                                time: new Date().toLocaleTimeString(),
-                                table_name: order.table?.name || '',
-                                tracking_number: order.tracking_number,
-                            },
-                            changedlines: change.new || change.cancelled || [],
-                        }];
-                    }
+                // Generate receipt data using filtered changes
+                let receiptsData = [];
+                try {
+                    const { orderData, changes: genChanges } = this.generateOrderChange(
+                        order,
+                        filteredChange,
+                        categoryIds,
+                        reprint
+                    );
+                    receiptsData = await this.generateReceiptsDataToPrint(orderData, genChanges, filteredChange);
+                } catch (e) {
+                    pfLog('Falling back to direct change data for printer', printerId, e?.message);
+                    receiptsData = [{
+                        changes: {
+                            new: changes.new,
+                            cancelled: changes.cancelled,
+                            config_name: this.config.name,
+                            employee_name: this.get_cashier?.()?.name || '',
+                            time: new Date().toLocaleTimeString(),
+                            table_name: order.table?.name || '',
+                            tracking_number: order.tracking_number,
+                        },
+                        changedlines: [...changes.new, ...changes.cancelled],
+                    }];
+                }
                     
                     for (const data of receiptsData) {
                         // Prepare changed lines
@@ -412,7 +427,6 @@ patch(PosStore.prototype, {
                             }
                         }
                     }
-                }
             } catch (error) {
                 // Log error but don't fail the order process
                 pfLog(`Error in print process for ${pfPrinterName}:`, error.message);
