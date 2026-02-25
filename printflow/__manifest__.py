@@ -39,7 +39,7 @@ Technical Requirements
 Author: Yasin Elabe
     """,
     'author': 'Yasin Elabe',
-    'website': 'https://github.com/yasinelabe',
+    'website': '',
     'support': 'yasinelabe@gmail.com',
     'license': 'OPL-1',
     'price': 89.00,
