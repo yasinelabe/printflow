@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintFlow - Direct Printing Solution</title>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px;">
+
+    <!-- Hero Section -->
+    <div style="background: linear-gradient(135deg, #714B67 0%, #5a3c53 100%); color: white; border-radius: 12px; padding: 50px 40px; text-align: center; margin-bottom: 40px;">
+        <h1 style="font-size: 2.5em; margin: 0 0 15px 0; font-weight: 700;">PrintFlow</h1>
+        <p style="font-size: 1.3em; margin: 0 0 25px 0; opacity: 0.95;">Direct Printing Solution for Odoo</p>
+        <p style="font-size: 1em; margin: 0; opacity: 0.85;">
+            Seamlessly print receipts, invoices, labels and reports directly to any local printer.<br>
+            No IoT Box. No cloud services. No recurring fees.
+        </p>
+    </div>
+
+    <!-- Showcase: Screenshots -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #714B67; border-bottom: 3px solid #714B67; padding-bottom: 10px; margin-bottom: 25px;">Showcase</h2>
+        <p style="margin: 0 0 25px 0; color: #555;">See PrintFlow in action — from settings and agent setup to POS and report printing.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+            <div style="text-align: center;">
+                <img src="main_banner.png" alt="PrintFlow overview" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">PrintFlow in the main menu</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="printflow-settings.png" alt="PrintFlow settings" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">Global PrintFlow settings &amp; connection</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="agent.png" alt="PrintFlow Desktop Agent" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">PrintFlow Desktop Agent</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="allow-ssl.png" alt="Agent SSL / connection" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">Agent connection (HTTPS / SSL)</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="must-show-success-page.png" alt="Verify connection success" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">Verify connection success</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="pos-printer.png" alt="POS PrintFlow configuration" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">POS terminal PrintFlow configuration</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="pos-printer-mapping.png" alt="POS printer mapping" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">POS receipt printer mapping</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="preparation-printers.png" alt="Kitchen / preparation printers" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">Kitchen / preparation printers list</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="preparation-printers-2.png" alt="Preparation printer configuration" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">Preparation printer (categories &amp; target)</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="assign-reports-to-printers.png" alt="Assign reports to printers" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee;"/>
+                <p style="margin: 10px 0 0 0; color: #666; font-size: 0.9em;">Assign reports to PrintFlow printers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Benefits -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
+        <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 10px;">
+            <div style="font-size: 2.5em; margin-bottom: 10px;">💰</div>
+            <h3 style="margin: 0 0 8px 0; color: #714B67;">One-Time Cost</h3>
+            <p style="margin: 0; color: #666; font-size: 0.9em;">No monthly fees or subscriptions</p>
+        </div>
+        <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 10px;">
+            <div style="font-size: 2.5em; margin-bottom: 10px;">⚡</div>
+            <h3 style="margin: 0 0 8px 0; color: #714B67;">Instant Printing</h3>
+            <p style="margin: 0; color: #666; font-size: 0.9em;">Direct connection, no delays</p>
+        </div>
+        <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 10px;">
+            <div style="font-size: 2.5em; margin-bottom: 10px;">🔧</div>
+            <h3 style="margin: 0 0 8px 0; color: #714B67;">Easy Setup</h3>
+            <p style="margin: 0; color: #666; font-size: 0.9em;">Up and running in minutes</p>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #714B67; border-bottom: 3px solid #714B67; padding-bottom: 10px; margin-bottom: 25px;">Features</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+            <div>
+                <h3 style="margin: 0 0 12px 0; color: #333;">
+                    <span style="color: #00a09d;">✓</span> POS Receipt Printing
+                </h3>
+                <p style="margin: 0; color: #555;">
+                    Print customer receipts instantly from Point of Sale. Supports thermal printers with graphic or text-based output modes.
+                </p>
+            </div>
+            
+            <div>
+                <h3 style="margin: 0 0 12px 0; color: #333;">
+                    <span style="color: #00a09d;">✓</span> Kitchen Order Tickets
+                </h3>
+                <p style="margin: 0; color: #555;">
+                    Route orders to multiple preparation printers based on product categories. Perfect for restaurants and bars.
+                </p>
+            </div>
+            
+            <div>
+                <h3 style="margin: 0 0 12px 0; color: #333;">
+                    <span style="color: #00a09d;">✓</span> Automatic Document Printing
+                </h3>
+                <p style="margin: 0; color: #555;">
+                    Configure printers for invoices, delivery slips, picking lists, and any other Odoo report.
+                </p>
+            </div>
+            
+            <div>
+                <h3 style="margin: 0 0 12px 0; color: #333;">
+                    <span style="color: #00a09d;">✓</span> ZPL Label Printing
+                </h3>
+                <p style="margin: 0; color: #555;">
+                    Native support for Zebra and compatible label printers. Print product, shipping, and inventory labels.
+                </p>
+            </div>
+            
+            <div>
+                <h3 style="margin: 0 0 12px 0; color: #333;">
+                    <span style="color: #00a09d;">✓</span> Multi-Workstation Support
+                </h3>
+                <p style="margin: 0; color: #555;">
+                    Each workstation can have its own agent instance with different printers configured.
+                </p>
+            </div>
+            
+            <div>
+                <h3 style="margin: 0 0 12px 0; color: #333;">
+                    <span style="color: #00a09d;">✓</span> Print Job Logging
+                </h3>
+                <p style="margin: 0; color: #555;">
+                    Complete history of all print jobs with status tracking and error logging for troubleshooting.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #714B67; border-bottom: 3px solid #714B67; padding-bottom: 10px; margin-bottom: 25px;">How It Works</h2>
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+            <div style="flex: 1; text-align: center; padding: 20px;">
+                <div style="width: 50px; height: 50px; background: #714B67; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4em; font-weight: bold; margin: 0 auto 15px;">1</div>
+                <h4 style="margin: 0 0 8px 0;">Install Agent</h4>
+                <p style="margin: 0; color: #666; font-size: 0.9em;">Download the <a href="https://github.com/yasinelabe/agent/releases/download/v1.1.0/PrintFlowAgent-v1.1.zip" style="color: #714B67; font-weight: 600;">PrintFlow Desktop Agent</a> and run it on any computer with printer access</p>
+            </div>
+            <div style="flex: 1; text-align: center; padding: 20px;">
+                <div style="width: 50px; height: 50px; background: #714B67; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4em; font-weight: bold; margin: 0 auto 15px;">2</div>
+                <h4 style="margin: 0 0 8px 0;">Configure Odoo</h4>
+                <p style="margin: 0; color: #666; font-size: 0.9em;">Enter the agent URL in PrintFlow settings and assign printers</p>
+            </div>
+            <div style="flex: 1; text-align: center; padding: 20px;">
+                <div style="width: 50px; height: 50px; background: #714B67; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4em; font-weight: bold; margin: 0 auto 15px;">3</div>
+                <h4 style="margin: 0 0 8px 0;">Start Printing</h4>
+                <p style="margin: 0; color: #666; font-size: 0.9em;">Documents automatically route to the configured printers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration Procedure -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #714B67; border-bottom: 3px solid #714B67; padding-bottom: 10px; margin-bottom: 25px;">Configuration Procedure</h2>
+        
+        <p style="margin: 0 0 25px 0; color: #555;">Follow these steps to get PrintFlow up and running.</p>
+        
+        <div style="background: #f8f9fa; border-radius: 10px; padding: 25px; margin-bottom: 25px; border-left: 4px solid #714B67;">
+            <h3 style="margin: 0 0 15px 0; color: #714B67; font-size: 1.2em;">Step 1: Install and run the PrintFlow Desktop Agent</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #555;">
+                <li><strong>Download the agent:</strong> Get the PrintFlow Desktop Agent from the <a href="https://github.com/yasinelabe/agent/releases/download/v1.1.0/PrintFlowAgent-v1.1.zip" style="color: #714B67; font-weight: 600;">official releases page (v1.0.0)</a>. Install it on a computer that has access to your printers (same machine or network).</li>
+                <li>Start the agent and leave it running. Note the URL it listens on (e.g. <code style="background: #eee; padding: 2px 6px; border-radius: 4px;">https://localhost:5000</code> or your machine’s IP).</li>
+                <li>Ensure the agent can be reached from the machines where Odoo (or the POS) runs (firewall and network permissions).</li>
+            </ul>
+        </div>
+        
+        <div style="background: #f8f9fa; border-radius: 10px; padding: 25px; margin-bottom: 25px; border-left: 4px solid #714B67;">
+            <h3 style="margin: 0 0 15px 0; color: #714B67; font-size: 1.2em;">Step 2: Global PrintFlow settings in Odoo</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #555;">
+                <li>Go to <strong>Settings</strong> (or <strong>General Settings</strong>) and open the <strong>PrintFlow</strong> app / section.</li>
+                <li>Set <strong>PrintFlow Desktop Agent</strong> to the agent URL (e.g. <code style="background: #eee; padding: 2px 6px; border-radius: 4px;">https://localhost:5000</code> or <code style="background: #eee; padding: 2px 6px; border-radius: 4px;">https://192.168.1.100:5000</code>).</li>
+                <li>Click <strong>Verify Connection</strong> to confirm Odoo can reach the agent.</li>
+                <li>Use the shortcuts in that section to open <strong>Report Printers</strong>, <strong>Print History</strong>, or <strong>Kitchen Printers</strong> as needed.</li>
+            </ul>
+        </div>
+        
+        <div style="background: #f8f9fa; border-radius: 10px; padding: 25px; margin-bottom: 25px; border-left: 4px solid #714B67;">
+            <h3 style="margin: 0 0 15px 0; color: #714B67; font-size: 1.2em;">Step 3: POS terminal configuration</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #555;">
+                <li>Go to <strong>Point of Sale</strong> → <strong>Configuration</strong> → open your POS (or create one).</li>
+                <li>Enable <strong>PrintFlow</strong> (e.g. “Enable PrintFlow” or similar checkbox).</li>
+                <li>Set <strong>PrintFlow server address</strong> if this terminal uses a different agent (otherwise the global URL is used).</li>
+                <li>Set <strong>Receipt printer</strong> to the exact printer name as shown in the PrintFlow agent (for customer receipts).</li>
+                <li>Choose <strong>Output format</strong> for receipts: graphic (image), graphic with cut, or raw text, depending on your printer.</li>
+            </ul>
+        </div>
+        
+        <div style="background: #f8f9fa; border-radius: 10px; padding: 25px; margin-bottom: 25px; border-left: 4px solid #714B67;">
+            <h3 style="margin: 0 0 15px 0; color: #714B67; font-size: 1.2em;">Step 4: Kitchen / preparation printers</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #555;">
+                <li>Go to <strong>PrintFlow</strong> → <strong>Kitchen Printers</strong> (or <strong>Point of Sale</strong> → <strong>Configuration</strong> → your POS → <strong>Order Printers</strong>).</li>
+                <li>Create or edit a preparation printer. Set its <strong>Product Categories</strong> so only the right products are sent to that printer.</li>
+                <li>Set <strong>PrintFlow target printer</strong> (or equivalent) to the <strong>exact</strong> printer name as shown in the PrintFlow agent (e.g. “Kitchen”, “Bar”, “XP-80C”).</li>
+                <li>Choose <strong>Ticket format</strong> (graphic or raw) for that printer. Save.</li>
+                <li>Repeat for each kitchen or bar printer. Printer names must match the agent exactly.</li>
+            </ul>
+        </div>
+        
+        <div style="background: #f8f9fa; border-radius: 10px; padding: 25px; margin-bottom: 25px; border-left: 4px solid #714B67;">
+            <h3 style="margin: 0 0 15px 0; color: #714B67; font-size: 1.2em;">Step 5: Assign printers to reports (invoices, delivery orders, etc.)</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #555;">
+                <li>In PrintFlow settings, click <strong>Report Printers</strong> (or go to <strong>Settings</strong> → <strong>Technical</strong> → <strong>Reports</strong> if your setup uses that path).</li>
+                <li>Open the report you want to print automatically (e.g. Invoice, Delivery Slip, Picking Operations).</li>
+                <li>Set the <strong>PrintFlow printer name</strong> to the exact name of the printer in the agent. Optionally set number of copies. Save.</li>
+                <li>When that report is printed in Odoo, it will be sent to the configured PrintFlow printer.</li>
+            </ul>
+        </div>
+        
+        <div style="background: #e8f4f4; border-radius: 10px; padding: 20px; margin-top: 20px;">
+            <p style="margin: 0; color: #555;"><strong style="color: #714B67;">Tip:</strong> Printer names are case-sensitive and must match exactly what the PrintFlow Desktop Agent shows. Use <strong>Verify Connection</strong> and <strong>Print History</strong> in PrintFlow to troubleshoot.</p>
+        </div>
+    </div>
+
+    <!-- Compatibility -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #714B67; border-bottom: 3px solid #714B67; padding-bottom: 10px; margin-bottom: 25px;">Compatibility</h2>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <th style="text-align: left; padding: 12px 15px; background: #f8f9fa; border-bottom: 2px solid #dee2e6;">Category</th>
+                <th style="text-align: left; padding: 12px 15px; background: #f8f9fa; border-bottom: 2px solid #dee2e6;">Supported</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;"><strong>Odoo Version</strong></td>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;">18.0 (Community & Enterprise)</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;"><strong>Desktop Agent OS</strong></td>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;">Windows 10/11, Linux, macOS</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;"><strong>Receipt Printers</strong></td>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;">ESC/POS compatible (Epson, Star, Bixolon, etc.)</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;"><strong>Label Printers</strong></td>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;">ZPL compatible (Zebra, TSC, SATO, Honeywell)</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;"><strong>Document Printers</strong></td>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;">Any printer with Windows/CUPS driver</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;"><strong>Connections</strong></td>
+                <td style="padding: 12px 15px; border-bottom: 1px solid #eee;">USB, Ethernet, WiFi, Bluetooth</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Use Cases -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #714B67; border-bottom: 3px solid #714B67; padding-bottom: 10px; margin-bottom: 25px;">Perfect For</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <div style="padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+                <strong style="color: #714B67;">🍽️ Restaurants & Cafes</strong>
+                <p style="margin: 8px 0 0 0; color: #555; font-size: 0.95em;">Receipt and kitchen ticket printing with category-based routing</p>
+            </div>
+            <div style="padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+                <strong style="color: #714B67;">🛒 Retail Stores</strong>
+                <p style="margin: 8px 0 0 0; color: #555; font-size: 0.95em;">Fast receipt printing and product label generation</p>
+            </div>
+            <div style="padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+                <strong style="color: #714B67;">📦 Warehouses</strong>
+                <p style="margin: 8px 0 0 0; color: #555; font-size: 0.95em;">Shipping labels, picking lists, and packing slips</p>
+            </div>
+            <div style="padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+                <strong style="color: #714B67;">🏢 Offices</strong>
+                <p style="margin: 8px 0 0 0; color: #555; font-size: 0.95em;">Automatic invoice and report printing</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support -->
+    <div style="background: #f8f9fa; border-radius: 10px; padding: 30px; text-align: center; margin-bottom: 40px;">
+        <h2 style="color: #714B67; margin: 0 0 15px 0;">Need Help?</h2>
+        <p style="margin: 0 0 20px 0; color: #555;">
+            Comprehensive documentation included. Professional support available.
+        </p>
+        <p style="margin: 0; color: #666; font-size: 0.9em;">
+            Contact: <a href="mailto:yasinelabe@gmail.com" style="color: #714B67;">yasinelabe@gmail.com</a>
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 20px 0; border-top: 1px solid #eee; color: #888; font-size: 0.9em;">
+        <p style="margin: 0;">
+            Developed by <strong style="color: #714B67;">Yasin Elabe</strong><br>
+            © 2024 All rights reserved
+        </p>
+    </div>
+
+</body>
+</html>

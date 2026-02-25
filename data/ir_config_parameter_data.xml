@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Default PrintFlow Configuration Parameters -->
+        <record id="printflow_default_server" model="ir.config_parameter">
+            <field name="key">printflow.server_url</field>
+            <field name="value">https://localhost:5000</field>
+        </record>
+        
+        <record id="printflow_default_active" model="ir.config_parameter">
+            <field name="key">printflow.active</field>
+            <field name="value">True</field>
+        </record>
+        
+        <record id="printflow_default_retention" model="ir.config_parameter">
+            <field name="key">printflow.log_retention_days</field>
+            <field name="value">30</field>
+        </record>
+        
+    </data>
+</odoo>

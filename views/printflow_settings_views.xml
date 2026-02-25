@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- PrintFlow Settings in General Configuration -->
+    <record id="printflow_config_settings_form" model="ir.ui.view">
+        <field name="name">res.config.settings.printflow</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                
+                <app data-string="PrintFlow" string="PrintFlow" name="printflow_app">
+                    
+                    <!-- Connection Settings Block -->
+                    <block title="Server Connection" name="printflow_connection_block">
+                        <setting 
+                            string="PrintFlow Desktop Agent"
+                            help="Connect to the PrintFlow agent running on your local network">
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="printflow_server_url" class="col-lg-4 o_light_label"/>
+                                    <field name="printflow_server_url" 
+                                           class="col-lg-5"
+                                           placeholder="https://localhost:5000"/>
+                                </div>
+                                <div class="row mt8">
+                                    <div class="col-lg-9 offset-lg-4">
+                                        <button name="action_verify_connection"
+                                                type="object"
+                                                string="Verify Connection"
+                                                class="btn-secondary"
+                                                icon="fa-plug"/>
+                                    </div>
+                                </div>
+                                <div class="row mt8">
+                                    <div class="col-lg-9 offset-lg-4 text-muted small">
+                                        Individual POS terminals can override this address in their configuration.
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                    <!-- Quick Actions Block -->
+                    <block title="Configuration" name="printflow_config_block">
+                        <setting string="Report Printers">
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <button name="action_open_report_configuration"
+                                            type="object"
+                                            string="Assign Printers to Reports"
+                                            class="btn-primary"
+                                            icon="fa-print"/>
+                                </div>
+                                <div class="text-muted small mt8">
+                                    Configure which printer handles each report type (invoices, delivery slips, labels, etc.)
+                                </div>
+                            </div>
+                        </setting>
+                        
+                        <setting string="Print History">
+                            <div class="content-group">
+                                <div class="row mt8">
+                                    <div class="col-lg-4">
+                                        <button name="action_view_print_history"
+                                                type="object"
+                                                string="View Print History"
+                                                class="btn-secondary"
+                                                icon="fa-history"/>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <label for="printflow_log_retention" class="o_light_label"/>
+                                        <field name="printflow_log_retention" class="oe_inline"/>
+                                        <span class="text-muted"> days</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                    <!-- Help Block -->
+                    <block title="Setup Guide" name="printflow_help_block">
+                        <setting string="Getting Started">
+                            <div class="content-group">
+                                <div class="alert alert-info mt8">
+                                    <h5 class="alert-heading">Quick Setup</h5>
+                                    <ol class="mb-0 ps-3">
+                                        <li>Install <strong>PrintFlow Desktop Agent</strong> on a computer with printer access</li>
+                                        <li>Launch the agent and note the displayed URL</li>
+                                        <li>Enter that URL in the Server Address field above</li>
+                                        <li>Click "Verify Connection" to confirm connectivity</li>
+                                        <li>Assign printers to your reports and POS terminals</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                </app>
+                
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

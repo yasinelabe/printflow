@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend POS Configuration with PrintFlow Fields -->
+    <record id="pos_config_printflow_form" model="ir.ui.view">
+        <field name="name">pos.config.printflow.form</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add PrintFlow settings after the IoT Box setting (target the setting containing is_posbox field) -->
+            <xpath expr="//setting[.//field[@name='is_posbox']]" position="after">
+                <setting id="printflow_settings" 
+                         string="PrintFlow Direct Printing" 
+                         help="Send receipts directly to network printers via PrintFlow server">
+                    <field name="pf_enable_direct_print"/>
+                    <div class="content-group mt16" invisible="not pf_enable_direct_print">
+                        <div class="row">
+                            <label for="pf_server_address" class="col-lg-4 o_light_label"/>
+                            <field name="pf_server_address" 
+                                   class="col-lg-8"
+                                   placeholder="Leave empty to use global setting"/>
+                        </div>
+                        <div class="row">
+                            <label for="pf_receipt_printer" class="col-lg-4 o_light_label"/>
+                            <field name="pf_receipt_printer"
+                                   class="col-lg-8"
+                                   placeholder="e.g., EPSON TM-T88V"/>
+                        </div>
+                        <div class="row">
+                            <label for="pf_output_format" class="col-lg-4 o_light_label"/>
+                            <field name="pf_output_format" class="col-lg-8"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

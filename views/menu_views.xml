@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- PrintFlow in main app menu (top-level, no parent = appears in app bar) -->
+    <menuitem id="menu_printflow_app"
+              name="PrintFlow"
+              sequence="95"
+              web_icon="printflow,static/description/icon.png"/>
+
+    <!-- Root group under the app (for submenus) -->
+    <menuitem id="menu_printflow_root"
+              name="PrintFlow"
+              parent="menu_printflow_app"
+              sequence="1"/>
+
+    <!-- Print History -->
+    <menuitem id="menu_printflow_history"
+              name="Print History"
+              parent="menu_printflow_root"
+              action="printflow_history_action"
+              sequence="10"/>
+
+</odoo>

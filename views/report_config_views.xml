@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend Report Actions with PrintFlow Configuration -->
+    <record id="report_action_printflow_form" model="ir.ui.view">
+        <field name="name">ir.actions.report.printflow.form</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add PrintFlow settings before the notebook -->
+            <xpath expr="//notebook" position="before">
+                <group string="PrintFlow Direct Print" name="printflow_settings"
+                       invisible="report_type not in ('qweb-pdf', 'qweb-html')">
+                    <group>
+                        <field name="pf_printer_name" 
+                               placeholder="Enter printer name for automatic printing"/>
+                    </group>
+                    <group>
+                        <field name="pf_copies"/>
+                    </group>
+                </group>
+            </xpath>
+            
+        </field>
+    </record>
+
+    <!-- Report List View with PrintFlow Column -->
+    <record id="report_action_printflow_tree" model="ir.ui.view">
+        <field name="name">ir.actions.report.printflow.tree</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view_tree"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='report_type']" position="after">
+                <field name="pf_printer_name" optional="show" string="Direct Printer"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+    <!-- Search View with PrintFlow Filters -->
+    <record id="report_action_printflow_search" model="ir.ui.view">
+        <field name="name">ir.actions.report.printflow.search</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_search_view"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//search" position="inside">
+                <filter name="has_printer" 
+                        string="Has Direct Printer" 
+                        domain="[('pf_printer_name', '!=', False)]"/>
+                <filter name="no_printer" 
+                        string="No Direct Printer" 
+                        domain="[('pf_printer_name', '=', False)]"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

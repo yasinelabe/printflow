@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend POS Kitchen/Preparation Printer with PrintFlow Fields -->
+    <record id="pos_printer_printflow_form" model="ir.ui.view">
+        <field name="name">pos.printer.printflow.form</field>
+        <field name="model">pos.printer</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_printer_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='product_categories_ids']" position="after">
+                <separator string="PrintFlow Direct Printing"/>
+                <field name="pf_target_printer" 
+                       placeholder="Enter exact printer name from PrintFlow Desktop Agent"/>
+                <field name="pf_ticket_format"/>
+                <div class="text-muted small">
+                    <p><strong>How it works:</strong> Products in the categories selected above 
+                    will be printed to this PrintFlow printer when an order is sent to kitchen.</p>
+                    <p>Make sure the printer name matches exactly as shown in the PrintFlow Desktop Agent.</p>
+                </div>
+            </xpath>
+            
+        </field>
+    </record>
+
+    <record id="pos_printer_printflow_tree" model="ir.ui.view">
+        <field name="name">pos.printer.printflow.tree</field>
+        <field name="model">pos.printer</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_printer"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='product_categories_ids']" position="after">
+                <field name="pf_target_printer" optional="show" string="PrintFlow Printer"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

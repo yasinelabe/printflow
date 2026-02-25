@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- PrintFlow History List View -->
+    <record id="printflow_history_tree" model="ir.ui.view">
+        <field name="name">printflow.history.list</field>
+        <field name="model">printflow.history</field>
+        <field name="arch" type="xml">
+            <list string="Print History" default_order="timestamp desc"
+                  decoration-success="result_status == 'delivered'"
+                  decoration-danger="result_status == 'error'"
+                  decoration-info="result_status == 'queued'">
+                <field name="timestamp"/>
+                <field name="target_printer"/>
+                <field name="document_name"/>
+                <field name="document_model" optional="hide"/>
+                <field name="output_format"/>
+                <field name="result_status" widget="badge"
+                       decoration-success="result_status == 'delivered'"
+                       decoration-danger="result_status == 'error'"
+                       decoration-info="result_status == 'queued'"/>
+                <field name="initiated_by" widget="many2one_avatar_user"/>
+                <field name="source_terminal" optional="show"/>
+                <field name="payload_bytes" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- PrintFlow History Form View -->
+    <record id="printflow_history_form" model="ir.ui.view">
+        <field name="name">printflow.history.form</field>
+        <field name="model">printflow.history</field>
+        <field name="arch" type="xml">
+            <form string="Print Job Details">
+                <header>
+                    <field name="result_status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Job Information">
+                            <field name="timestamp"/>
+                            <field name="target_printer"/>
+                            <field name="output_format"/>
+                            <field name="payload_bytes"/>
+                        </group>
+                        <group string="Document">
+                            <field name="document_model"/>
+                            <field name="document_name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Source">
+                            <field name="initiated_by"/>
+                            <field name="source_terminal"/>
+                        </group>
+                    </group>
+                    <group string="Error Details" invisible="not error_details">
+                        <field name="error_details" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- PrintFlow History Search View -->
+    <record id="printflow_history_search" model="ir.ui.view">
+        <field name="name">printflow.history.search</field>
+        <field name="model">printflow.history</field>
+        <field name="arch" type="xml">
+            <search string="Search Print History">
+                <field name="target_printer"/>
+                <field name="document_name"/>
+                <field name="initiated_by"/>
+                <separator/>
+                <filter name="today" string="Today"
+                        domain="[('timestamp', '>=', datetime.datetime.combine(context_today(), datetime.time(0, 0, 0)))]"/>
+                <filter name="this_week" string="This Week"
+                        domain="[('timestamp', '>=', (context_today() - relativedelta(weeks=1)))]"/>
+                <separator/>
+                <filter name="delivered" string="Delivered"
+                        domain="[('result_status', '=', 'delivered')]"/>
+                <filter name="errors" string="Errors"
+                        domain="[('result_status', '=', 'error')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_printer" string="Printer" 
+                            context="{'group_by': 'target_printer'}"/>
+                    <filter name="group_status" string="Status" 
+                            context="{'group_by': 'result_status'}"/>
+                    <filter name="group_user" string="User" 
+                            context="{'group_by': 'initiated_by'}"/>
+                    <filter name="group_date" string="Date" 
+                            context="{'group_by': 'timestamp:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- PrintFlow History Action -->
+    <record id="printflow_history_action" model="ir.actions.act_window">
+        <field name="name">Print History</field>
+        <field name="res_model">printflow.history</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="printflow_history_search"/>
+        <field name="context">{'search_default_today': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No print history yet
+            </p>
+            <p>
+                Print jobs will appear here as they are processed by PrintFlow.
+            </p>
+        </field>
+    </record>
+
+</odoo>
